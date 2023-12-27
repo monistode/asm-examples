@@ -1,16 +1,17 @@
-.text:
+.text
 
 _start:
-mov  msg
+mov  $18
 mov %IR1, %ACC
-load [%IR1]
+mov %ACC, %IR1
+load %ACC, [%IR1]
 out $0
 inc %IR1
 mov %ACC, %IR1
-cmp $msg_len
-jne $3
+cmp $33
+jne 5
 halt
 
-.data:
-msg: "Hello, world!\n"
-msg_len = . - msg
+.data
+msg: 
+ascii "Hello, world!\n"
